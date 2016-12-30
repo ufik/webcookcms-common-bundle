@@ -1,5 +1,5 @@
 parameters:
-    resources_path: %kernel.root_dir%/../../../../../src/Webcook/Cms/CommonBundle/Controller
+    resources_path: %kernel.root_dir%/../../../../../../../../src/Webcook/Cms/CommonBundle/Controller
 
 framework:
     router:

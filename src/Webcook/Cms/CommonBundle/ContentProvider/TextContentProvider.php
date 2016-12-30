@@ -11,6 +11,7 @@ namespace Webcook\Cms\CommonBundle\ContentProvider;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Webcook\Cms\CoreBundle\Entity\Page;
 use Webcook\Cms\CoreBundle\Entity\Section;
+use Webcook\Cms\CoreBundle\ContentProvider\AbstractContentProvider;
 
 class TextContentProvider extends AbstractContentProvider
 {
@@ -22,10 +23,16 @@ class TextContentProvider extends AbstractContentProvider
             'section' => $section
         ));
 
+        if (is_null($settings)) {
+            $text = '';
+        } else {
+            $text = $settings->getText();
+        }
+
         return $this->twig->render(
             'WebcookCmsCommonBundle:ContentProvider:text.html.twig',
             array(
-                'text' => $settings->getText()
+                'text' => $text
             )
         );
     }

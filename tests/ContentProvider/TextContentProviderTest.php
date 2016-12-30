@@ -22,7 +22,8 @@ class TextContentProviderTest extends \Webcook\Cms\CoreBundle\Tests\BasicTestCas
     private function loadData()
     {
         $this->loadFixtures(array(
-            'Webcook\Cms\CommonBundle\DataFixtures\ORM\LoadContentProviderData'
+            'Webcook\Cms\CommonBundle\DataFixtures\ORM\LoadContentProviderData',
+            'Webcook\Cms\CommonBundle\DataFixtures\ORM\LoadTextContentProviderSettingsData'
         ));
     }
 }

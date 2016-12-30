@@ -4,10 +4,17 @@ namespace Webcook\Cms\CommonBundle\Tests\Controller;
 
 class TextContentProviderSettingsControllerTest extends \Webcook\Cms\CoreBundle\Tests\BasicTestCase
 {
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->loadData();
+    }
+
     public function testGetSettings()
     {
         $this->createTestClient();
-        $this->client->request('GET', '/api/content-providers/text/settings/1/1');
+        $this->client->request('GET', '/api/content-providers/text/settings/1/2');
 
         $settings = $this->client->getResponse()->getContent();
 
@@ -35,7 +42,7 @@ class TextContentProviderSettingsControllerTest extends \Webcook\Cms\CoreBundle\
             array(
                 'text_content_provider_settings' => array(
                     'page' => 1,
-                    'section' => 1,
+                    'section' => 2,
                     'text' => 'Test <a></a>'
                 ),
             )
@@ -45,10 +52,10 @@ class TextContentProviderSettingsControllerTest extends \Webcook\Cms\CoreBundle\
 
         $settings = $this->em->getRepository('Webcook\Cms\CommonBundle\Entity\TextContentProviderSettings')->findAll();
 
-        $this->assertCount(4, $settings);
-        $this->assertEquals('Main', $settings[3]->getPage()->getTitle());
-        $this->assertEquals('Menu', $settings[3]->getSection()->getName());
-        $this->assertEquals('Test <a></a>', $settings[3]->getText());
+        $this->assertCount(2, $settings);
+        $this->assertEquals('Main', $settings[1]->getPage()->getTitle());
+        $this->assertEquals('Content', $settings[1]->getSection()->getName());
+        $this->assertEquals('Test <a></a>', $settings[1]->getText());
     }
 
     public function testPut()
@@ -152,7 +159,7 @@ class TextContentProviderSettingsControllerTest extends \Webcook\Cms\CoreBundle\
     private function loadData()
     {
         $this->loadFixtures(array(
-            'Webcook\Cms\CommonBundle\DataFixtures\ORM\LoadContentProviderData'
+            'Webcook\Cms\CommonBundle\DataFixtures\ORM\LoadTextContentProviderSettingsData'
         ));
     }
 }
