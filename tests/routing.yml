@@ -1,0 +1,2 @@
+webcook_cms_common:
+    resource: "@WebcookCmsCommonBundle/Resources/config/routing.yml"

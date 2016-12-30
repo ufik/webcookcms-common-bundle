@@ -1,0 +1,6 @@
+services:
+    webcookcms.common.text_content_provider:
+        class: Webcook\Cms\CommonBundle\ContentProvider\TextContentProvider
+        arguments: ["@service_container"]
+        tags:
+            - { name: webcookcms.content_provider }

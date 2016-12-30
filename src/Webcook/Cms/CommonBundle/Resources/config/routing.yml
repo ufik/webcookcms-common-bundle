@@ -1,0 +1,4 @@
+webcook_cms_common_menu_content_provider_settings:
+    resource: "@WebcookCmsCommonBundle/Controller/TextContentProviderSettingsController.php"
+    type:     rest
+    prefix: /api
