@@ -43,8 +43,8 @@ class TextContentProviderSettingsController extends BaseRestController
     {
         $this->checkPermission(WebcookCmsVoter::ACTION_VIEW);
 
-        $page     = $this->getEntityManager()->getRepository('Webcook\Cms\CommonBundle\Entity\Page')->find($pageId);
-        $section  = $this->getEntityManager()->getRepository('Webcook\Cms\CommonBundle\Entity\Section')->find($sectionId);
+        $page     = $this->getEntityManager()->getRepository('Webcook\Cms\CoreBundle\Entity\Page')->find($pageId);
+        $section  = $this->getEntityManager()->getRepository('Webcook\Cms\CoreBundle\Entity\Section')->find($sectionId);
 
         $settings = $this->getEntityManager()->getRepository('Webcook\Cms\CommonBundle\Entity\TextContentProviderSettings')->findOneBy(array(
             'page'    => $page,

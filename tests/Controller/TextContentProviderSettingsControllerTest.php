@@ -20,14 +20,14 @@ class TextContentProviderSettingsControllerTest extends \Webcook\Cms\CoreBundle\
 
         $data = json_decode($settings, true);
         $this->assertEquals('Main', $data['page']['title']);
-        $this->assertEquals('Menu', $data['section']['name']);
+        $this->assertEquals('Content', $data['section']['name']);
         $this->assertEquals('<p>Test text</p>', $data['text']);
     }
 
     public function testGetNonExistingSettings()
     {
         $this->createTestClient();
-        $this->client->request('GET', '/api/content-providers/text/settings/1/2');
+        $this->client->request('GET', '/api/content-providers/text/settings/1/3');
 
         $this->assertEquals(400, $this->client->getResponse()->getStatusCode());
     }
@@ -88,13 +88,13 @@ class TextContentProviderSettingsControllerTest extends \Webcook\Cms\CoreBundle\
     {
         $this->createTestClient();
 
-        $crawler = $this->client->request('DELETE', '/api/content-providers/text/settings/2');
+        $crawler = $this->client->request('DELETE', '/api/content-providers/text/settings/1');
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
 
         $settings = $this->em->getRepository('Webcook\Cms\CommonBundle\Entity\TextContentProviderSettings')->findAll();
 
-        $this->assertCount(2, $settings);
+        $this->assertCount(0, $settings);
     }
 
     public function testWrongPost()
@@ -132,7 +132,7 @@ class TextContentProviderSettingsControllerTest extends \Webcook\Cms\CoreBundle\
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
 
-        $settings = $this->em->getRepository('Webcook\Cms\CommonBundle\Entity\TextContentProviderSettings')->find(4);
+        $settings = $this->em->getRepository('Webcook\Cms\CommonBundle\Entity\TextContentProviderSettings')->find(2);
 
         $this->assertEquals('Footer', $settings->getPage()->getTitle());
         $this->assertEquals('Content', $settings->getSection()->getName());
