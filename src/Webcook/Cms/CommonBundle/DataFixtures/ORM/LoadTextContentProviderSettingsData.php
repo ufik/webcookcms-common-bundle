@@ -15,6 +15,7 @@ use Webcook\Cms\CoreBundle\Entity\ContentProvider;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Webcook\Cms\CommonBundle\Entity\TextContentProviderSettings;
+use Webcook\Cms\CoreBundle\Entity\PageSection;
 
 /**
  * ContentProvider fixtures for tests.
@@ -50,13 +51,21 @@ class LoadTextContentProviderSettingsData implements FixtureInterface, Container
     {
         $this->manager = $manager;
 
-        $page    = $this->manager->getRepository('Webcook\Cms\CoreBundle\Entity\Page')->find(1);
-        $section = $this->manager->getRepository('Webcook\Cms\CoreBundle\Entity\Section')->find(2);
+        $page    = $this->manager->getRepository('Webcook\Cms\CoreBundle\Entity\Page')->findAll();
+        $section = $this->manager->getRepository('Webcook\Cms\CoreBundle\Entity\Section')->findAll();
+        $contentProvider = $this->manager->getRepository('Webcook\Cms\CoreBundle\Entity\ContentProvider')->findAll();
 
         $textCPS = new TextContentProviderSettings;
-        $textCPS->setPage($page)
-            ->setSection($section)
+        $textCPS->setPage($page[6])
+            ->setSection($section[1])
             ->setText('<p>Test text</p>');
+
+        $pageSection = new PageSection();
+            $pageSection->setPage($page[6]);
+            $pageSection->setSection($section[1]);
+            $pageSection->setContentProvider($contentProvider[1]);
+
+            $this->manager->persist($pageSection);
 
         $this->manager->persist($textCPS);
         
