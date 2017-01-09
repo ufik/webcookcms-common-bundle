@@ -3,7 +3,7 @@
 /**
  * This file is part of Webcook common bundle.
  *
- * See LICENSE file in the root of the bundle. Webcook 
+ * See LICENSE file in the root of the bundle. Webcook
  */
 
 namespace Webcook\Cms\CommonBundle\Controller;
@@ -52,7 +52,7 @@ class TextContentProviderSettingsController extends BaseRestController
         ));
 
         if (is_null($settings)) {
-            $view = $this->getViewWithMessage(null, 400, 'Settings not found.');
+            $view = $this->getViewWithMessage(null, 404, 'Settings not found.');
         } else {
             $view = $this->view($settings, 200);
         }
@@ -139,7 +139,7 @@ class TextContentProviderSettingsController extends BaseRestController
      * )
      * @Delete("/content-providers/text/settings/{id}", options={"i18n"=false})
      */
-    public function TextContentProviderSettingsAction($id)
+    public function textContentProviderSettingsAction($id)
     {
         $this->checkPermission(WebcookCmsVoter::ACTION_DELETE);
 

@@ -10,7 +10,7 @@ class TextContentProviderTest extends \Webcook\Cms\CoreBundle\Tests\BasicTestCas
     {
         $this->loadData();
 
-        $page = $this->em->getRepository('Webcook\Cms\CoreBundle\Entity\Page')->find(1);
+        $page = $this->em->getRepository('Webcook\Cms\CoreBundle\Entity\Page')->find(7);
         $section = $this->em->getRepository('Webcook\Cms\CoreBundle\Entity\Section')->find(2);
 
         $textContentProvider = $this->container->get('webcookcms.common.text_content_provider');

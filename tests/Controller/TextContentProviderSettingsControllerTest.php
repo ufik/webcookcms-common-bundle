@@ -14,12 +14,12 @@ class TextContentProviderSettingsControllerTest extends \Webcook\Cms\CoreBundle\
     public function testGetSettings()
     {
         $this->createTestClient();
-        $this->client->request('GET', '/api/content-providers/text/settings/1/2');
+        $this->client->request('GET', '/api/content-providers/text/settings/7/2');
 
         $settings = $this->client->getResponse()->getContent();
 
         $data = json_decode($settings, true);
-        $this->assertEquals('Main', $data['page']['title']);
+        $this->assertEquals('Uvod', $data['page']['title']);
         $this->assertEquals('Content', $data['section']['name']);
         $this->assertEquals('<p>Test text</p>', $data['text']);
     }
@@ -29,7 +29,7 @@ class TextContentProviderSettingsControllerTest extends \Webcook\Cms\CoreBundle\
         $this->createTestClient();
         $this->client->request('GET', '/api/content-providers/text/settings/1/3');
 
-        $this->assertEquals(400, $this->client->getResponse()->getStatusCode());
+        $this->assertEquals(404, $this->client->getResponse()->getStatusCode());
     }
 
     public function testPost()

@@ -3,7 +3,7 @@
 /**
  * This file is part of Webcook common bundle.
  *
- * See LICENSE file in the root of the bundle. Webcook 
+ * See LICENSE file in the root of the bundle. Webcook
  */
 
 namespace Webcook\Cms\CommonBundle\DataFixtures\ORM;
@@ -63,9 +63,9 @@ class LoadTextContentProviderSettingsData implements FixtureInterface, Container
         $pageSection = new PageSection();
             $pageSection->setPage($page[6]);
             $pageSection->setSection($section[1]);
-            $pageSection->setContentProvider($contentProvider[1]);
+            $pageSection->setContentProvider($contentProvider[0]);
 
-            $this->manager->persist($pageSection);
+        $this->manager->persist($pageSection);
 
         $this->manager->persist($textCPS);
         
