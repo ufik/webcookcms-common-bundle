@@ -3,7 +3,7 @@
 /**
  * This file is part of Webcook common bundle.
  *
- * See LICENSE file in the root of the bundle. Webcook 
+ * See LICENSE file in the root of the bundle. Webcook
  */
 
 namespace Webcook\Cms\CommonBundle\DataFixtures\ORM;
@@ -14,6 +14,7 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Webcook\Cms\CoreBundle\Entity\ContentProvider;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Webcook\Cms\CommonBundle\Entity\TextContentProviderSettings;
 
 /**
  * ContentProvider fixtures for tests.
@@ -49,7 +50,7 @@ class LoadContentProviderData implements FixtureInterface, ContainerAwareInterfa
     {
         $this->manager = $manager;
 
-        $this->addContentProvider('webcookcms.common.text_content_provider');
+        $this->addContentProvider(TextContentProviderSettings::TAG);
         
         $this->manager->flush();
     }

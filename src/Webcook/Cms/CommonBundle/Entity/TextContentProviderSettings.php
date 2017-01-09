@@ -13,6 +13,8 @@ use Webcook\Cms\CoreBundle\Entity\ContentProviderSettings;
  */
 class TextContentProviderSettings extends ContentProviderSettings
 {
+    const TAG = 'webcookcms.common.text_content_provider';
+
     /** @ORM\Column(type="text") */
     private $text;
 

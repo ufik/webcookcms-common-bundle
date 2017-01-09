@@ -60,13 +60,6 @@ class LoadTextContentProviderSettingsData implements FixtureInterface, Container
             ->setSection($section[1])
             ->setText('<p>Test text</p>');
 
-        $pageSection = new PageSection();
-            $pageSection->setPage($page[6]);
-            $pageSection->setSection($section[1]);
-            $pageSection->setContentProvider($contentProvider[0]);
-
-        $this->manager->persist($pageSection);
-
         $this->manager->persist($textCPS);
         
         $this->manager->flush();
